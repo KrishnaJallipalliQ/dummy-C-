@@ -36,7 +36,7 @@ steps:
   inputs:
     projectName: 'nagakrishna292'
     scanPath: '$(System.DefaultWorkingDirectory)'
-    format: 'XML, JSON'
+    format: 'XML, JSON, HTML'
 - task: PublishBuildArtifacts@1
   inputs:
     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
