@@ -44,5 +44,5 @@ Note: comment on YouTube if you got any problems or email: hi@vijaythapa.com
 2. Add a Star 🌟  to this 👆 Repository
 
 ## Support Jira
-1. Integrate with Jira
+1. Integrate Git with Jira 
 
