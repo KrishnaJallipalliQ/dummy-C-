@@ -43,6 +43,6 @@ Note: comment on YouTube if you got any problems or email: hi@vijaythapa.com
 1. Subscribe & Share my YouTube Channel - https://bit.ly/vijay-thapa-online-courses
 2. Add a Star 🌟  to this 👆 Repository
 
-
-
+## Support Jira
+1. Integrate with Jira
 
