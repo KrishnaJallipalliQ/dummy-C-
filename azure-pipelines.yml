@@ -37,6 +37,15 @@ steps:
     projectName: 'nagakrishna292'
     scanPath: '$(System.DefaultWorkingDirectory)'
     format: 'XML, HTML'
+
+- task: SnykSecurityScan@1
+  inputs:
+    serviceConnectionEndpoint: 'Snyk-Azure'
+    testType: 'app'
+    monitorWhen: 'always'
+    failOnIssues: true
+    projectName: 'Snyk_Azure'
+    organization: 'krishnaJ'
 - task: PublishBuildArtifacts@1
   inputs:
     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
