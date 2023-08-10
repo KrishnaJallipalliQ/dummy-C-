@@ -44,7 +44,7 @@ steps:
     testType: 'app'
     monitorWhen: 'always'
     failOnIssues: true
-    projectName: 'Snyk_Azure'
+    projectName: 'krishnaNHSX/dummy-C-'
     organization: 'krishnaJ'
 - task: PublishBuildArtifacts@1
   inputs:
