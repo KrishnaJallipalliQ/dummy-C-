@@ -35,7 +35,8 @@ steps:
 
 - script: |
     choco install pmd -y
-    pmd.bat -d src/classes -R ruleset.xml -f xml -r pmd-report.xml
+    refreshenv
+     "C:/ProgramData/chocolatey/bin/pmd.bat" -d src/classes -R ruleset.xml -f xml -r pmd-report.xml
   displayName: 'Run PMD Analysis'
 
 - task: PublishPipelineArtifact@1
