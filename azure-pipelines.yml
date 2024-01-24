@@ -34,10 +34,7 @@ steps:
     configuration: '$(buildConfiguration)'
 
 - script: |
-    # Install PMD using Chocolatey
     choco install pmd -y
-
-    # Run PMD analysis on Salesforce Apex code
     pmd.bat -d src/classes -R ruleset.xml -f xml -r pmd-report.xml
   displayName: 'Run PMD Analysis'
 
