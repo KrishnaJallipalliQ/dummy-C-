@@ -33,6 +33,12 @@ steps:
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
 
+- task: dependency-check-build-task@6
+  inputs:
+    projectName: 'nagakrishna292'
+    scanPath: '$(System.DefaultWorkingDirectory)'
+    format: 'XML, HTML'
+    
 - script: |
     choco install pmd -y
     refreshenv
@@ -44,11 +50,6 @@ steps:
   inputs:
     targetPath: '$(Build.ArtifactStagingDirectory)/pmd-report.xml'
     artifact: 'pmd-report'
-- task: dependency-check-build-task@6
-  inputs:
-    projectName: 'nagakrishna292'
-    scanPath: '$(System.DefaultWorkingDirectory)'
-    format: 'XML, HTML'
 - task: SnykSecurityScan@1
   inputs:
     serviceConnectionEndpoint: 'Snyk-Azure'
