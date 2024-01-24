@@ -36,12 +36,12 @@ steps:
 - script: |
     choco install pmd -y
     refreshenv
-     "C:/ProgramData/chocolatey/bin/pmd.bat" -d src/classes -R ruleset.xml -f xml -r pmd-report.xml
+     "C:/ProgramData/chocolatey/bin/pmd.bat" -d src/classes -R ruleset.xml -f xml -r $(Build.ArtifactStagingDirectory)/pmd-report.xml
   displayName: 'Run PMD Analysis'
 
 - task: PublishPipelineArtifact@1
   inputs:
-    targetPath: '$(System.DefaultWorkingDirectory)/pmd-report.xml'
+    targetPath: '$(Build.ArtifactStagingDirectory)/pmd-report.xml'
     artifact: 'pmd-report'
 - task: dependency-check-build-task@6
   inputs:
