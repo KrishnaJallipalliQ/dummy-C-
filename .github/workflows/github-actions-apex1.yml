@@ -25,18 +25,9 @@ jobs:
         pmd-version: '6.40.0'
         pmd-rulesets: 'ruleset.xml'
         target-directory: 'src/classes'
-      post:
-        - name: Upload PMD Report
-          uses: actions/upload-artifact@v2
-          with:
-            name: pmd-report
-            path: pmd-report.xml
+    - name: Upload PMD Report
+      uses: actions/upload-artifact@v2
+      with:
+        name: pmd-report
+        path: pmd-report.xml 
 
-    - name: Publish PMD Analysis to SonarQube
-      run: |
-        # Assuming you have PMD XML report generated, use SonarQube Generic Issue Import to push PMD results to SonarQube
-        sonar-scanner \
-          -Dsonar.issuesReportPaths=pmd-report.xml \
-          -Dsonar.login=your_sonarqube_token
-      env:
-        SONAR_USER_HOME: './.sonar'  # to prevent caching conflicts
