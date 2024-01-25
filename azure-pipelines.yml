@@ -32,12 +32,6 @@ steps:
   inputs:
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
-
-- task: dependency-check-build-task@6
-  inputs:
-    projectName: 'nagakrishna292'
-    scanPath: '$(System.DefaultWorkingDirectory)'
-    format: 'XML, HTML'
     
 - script: |
     choco install pmd -y
@@ -45,10 +39,9 @@ steps:
      "C:/ProgramData/chocolatey/bin/pmd.bat" -d src/classes -R ruleset.xml -f xml -r $(Build.ArtifactStagingDirectory)/pmd-report.xml
      dir $(Build.ArtifactStagingDirectory)
   displayName: 'Run PMD Analysis'
-
 - task: PublishPipelineArtifact@1
   inputs:
-    targetPath: '$(Build.ArtifactStagingDirectory)/pmd-report.xml'
+    targetPath: '$(Build.ArtifactStagingDirectory)'
     artifact: 'pmd-report'
 - task: SnykSecurityScan@1
   inputs:
