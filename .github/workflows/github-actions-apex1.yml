@@ -19,26 +19,18 @@ jobs:
         distribution: 'adopt'
         java-version: '11'
 
-    - name: Set up SonarQube Scanner
-      run: |
-        wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.6.0.2311-linux.zip
-        unzip sonar-scanner-cli-4.6.0.2311-linux.zip
-        export PATH=$PATH:$(pwd)/sonar-scanner-4.6.0.2311-linux/bin
-
-    - name: SonarQube Analysis
-      run: |
-        sonar-scanner \
-          -Dsonar.host.url=http://sonarqube-server:9000 \
-          -Dsonar.login=your_sonarqube_token
-      env:
-        SONAR_USER_HOME: './.sonar'  # to prevent caching conflicts
-
     - name: PMD Analysis
       uses: salesforce/pmd-action@v1
       with:
         pmd-version: '6.40.0'
         pmd-rulesets: 'ruleset.xml'
         target-directory: 'src/classes'
+      post:
+        - name: Upload PMD Report
+          uses: actions/upload-artifact@v2
+          with:
+            name: pmd-report
+            path: pmd-report.xml
 
     - name: Publish PMD Analysis to SonarQube
       run: |
