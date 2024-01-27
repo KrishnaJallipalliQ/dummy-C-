@@ -25,6 +25,7 @@ jobs:
         pmd-version: '6.40.0'
         pmd-rulesets: 'ruleset.xml'
         target-directory: 'src/classes'
+        
     - name: Upload PMD Report
       uses: actions/upload-artifact@v2
       with:
