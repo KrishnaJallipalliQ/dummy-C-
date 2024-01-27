@@ -20,11 +20,7 @@ jobs:
         java-version: '11'
 
     - name: PMD Analysis
-      uses: salesforce/pmd-action@v1
-      with:
-        pmd-version: '6.40.0'
-        pmd-rulesets: 'ruleset.xml'
-        target-directory: 'src/classes'
+      uses: legetz/setup-pmd@7.0.0-rc3
         
     - name: Upload PMD Report
       uses: actions/upload-artifact@v2
