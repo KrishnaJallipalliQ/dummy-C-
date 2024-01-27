@@ -29,14 +29,10 @@ jobs:
         echo "Current working directory: $(pwd)"
     - name: Run PMD
       run: pmd check --dir ./apex-recipes-main/force-app/main/default/classes/*.cls --rulesets ./pmd-rules.xml -f xml -r custom-pmd-report.xml || true
-    - name: Upload SARIF file
-      uses: github/codeql-action/upload-sarif@v3
-      with:
-        sarif_file: /home/runner/work/dummy-C-/dummy-C-/pmd-report.sarif 
 
     - name: Upload PMD Report
       uses: actions/upload-artifact@v2
       with:
         name: pmd-report
-        path: $(pwd)/pmd-report.xml 
+        path: /home/runner/work/dummy-C-/dummy-C-/pmd-report.xml 
 
