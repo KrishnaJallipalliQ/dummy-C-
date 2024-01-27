@@ -30,7 +30,7 @@ jobs:
       with:
         sarif_file: pmd-report.sarif  
     - name: Upload PMD Report
-      uses: actions/upload-artifact@v2 --dir ./apex-recipes-main/force-app/main
+      uses: actions/upload-artifact@v2
       with:
         name: pmd-report
         path: pmd-report.xml 
