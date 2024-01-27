@@ -20,11 +20,11 @@ jobs:
         java-version: '11'
 
     - name: PMD Analysis
-      uses: legetz/setup-pmd@v2
+      uses: legetz/setup-pmd@7.0.0-rc3
     - name: Run PMD
       run: |
         # Run PMD analysis and generate the report
-        pmd -d src/classes -R ruleset.xml -f xml -r pmd-report.xml
+        pmd-bin-7.0.0-rc3/bin/run.sh pmd -d src/classes -R ruleset.xml -f xml -r pmd-report.xml
         
     - name: Upload PMD Report
       uses: actions/upload-artifact@v2
