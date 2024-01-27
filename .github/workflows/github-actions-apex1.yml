@@ -28,10 +28,12 @@ jobs:
     - name: Upload SARIF file
       uses: github/codeql-action/upload-sarif@v3
       with:
-        sarif_file: ./apex-recipes-main/force-app/pmd-report.sarif  
+        sarif_file: ./apex-recipes-main/force-app/pmd-report.sarif 
+
     - name: Debug
       run: |
-        ls -R ./apex-recipes-main/force-app/
+        ls 
+        echo "Current working directory: $(pwd)"
     - name: Upload PMD Report
       uses: actions/upload-artifact@v2
       with:
