@@ -22,10 +22,7 @@ jobs:
     - name: PMD Analysis
       uses: legetz/setup-pmd@7.0.0-rc3
     - name: Run PMD
-      run: |
-        # Run PMD analysis and generate the report
-        pmd-bin-7.0.0-rc3/bin/run.sh pmd -d src/classes -R ruleset.xml -f xml -r pmd-report.xml
-        
+      run: pmd check --dir ./apex-recipes-main/force-app/main/default/classes/*.cls --rulesets ./pmd-rules.xml -f text 
     - name: Upload PMD Report
       uses: actions/upload-artifact@v2
       with:
