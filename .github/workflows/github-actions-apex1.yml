@@ -23,6 +23,10 @@ jobs:
 
     - name: PMD Analysis
       uses: legetz/setup-pmd@7.0.0-rc3
+    - name: Debug
+      run: |
+        ls 
+        echo "Current working directory: $(pwd)"
     - name: Run PMD
       run: pmd check --dir ./apex-recipes-main/force-app/main/default/classes/*.cls --rulesets ./pmd-rules.xml -f xml -r custom-pmd-report.xml || true
     - name: Upload SARIF file
@@ -30,10 +34,6 @@ jobs:
       with:
         sarif_file: ./apex-recipes-main/force-app/pmd-report.sarif 
 
-    - name: Debug
-      run: |
-        ls 
-        echo "Current working directory: $(pwd)"
     - name: Upload PMD Report
       uses: actions/upload-artifact@v2
       with:
