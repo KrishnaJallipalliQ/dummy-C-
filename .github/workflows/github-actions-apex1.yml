@@ -32,11 +32,11 @@ jobs:
     - name: Upload SARIF file
       uses: github/codeql-action/upload-sarif@v3
       with:
-        sarif_file: C:/Users/krishna.jallipalli/Downloads/apex-recipes-main/apex-recipes-main/pmd-report.sarif 
+        sarif_file: $(pwd)/pmd-report.sarif 
 
     - name: Upload PMD Report
       uses: actions/upload-artifact@v2
       with:
         name: pmd-report
-        path: pmd-report.xml 
+        path: $(pwd)/pmd-report.xml 
 
