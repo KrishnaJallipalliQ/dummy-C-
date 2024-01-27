@@ -24,7 +24,11 @@ jobs:
     - name: PMD Analysis
       uses: legetz/setup-pmd@7.0.0-rc3
     - name: Run PMD
-      run: pmd check --dir ./apex-recipes-main/force-app/main/default/classes/*.cls --rulesets ./pmd-rules.xml -f text || true 
+      run: pmd check --dir ./apex-recipes-main/force-app/main/default/classes/*.cls --rulesets ./pmd-rules.xml -f text || true
+    - name: Upload SARIF file
+      uses: github/codeql-action/upload-sarif@v1
+      with:
+        sarif_file: pmd-report.sarif  
     - name: Upload PMD Report
       uses: actions/upload-artifact@v2
       with:
