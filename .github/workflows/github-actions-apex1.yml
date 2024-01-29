@@ -34,5 +34,5 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
         name: pmd-report
-        path: /home/runner/work/dummy-C-/pmd-report.xml 
+        path: /home/runner/work/dummy-C-/dummy-C-/pmd-report.xml  
 
