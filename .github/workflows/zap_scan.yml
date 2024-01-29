@@ -1,0 +1,34 @@
+name: OWASP ZAP Scan
+
+on: [push]
+
+jobs:
+  zap_scan:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up Java
+      uses: actions/setup-java@v2
+      with:
+        distribution: 'adopt'
+        java-version: '11'
+
+    - name: Download OWASP ZAP
+      run: |
+        wget https://github.com/zaproxy/zaproxy/releases/download/v2.10.0/ZAP_2.10.0_Linux.tar.gz
+        tar -xzf ZAP_2.10.0_Linux.tar.gz
+
+    - name: Run ZAP Scan
+      run: |
+        cd ZAP_2.10.0
+        ./zap.sh -daemon -host 127.0.0.1 -port 8080 -config api.disablekey=true
+        ./zap-cli.sh -p 8080 -c quick-scan -r zap-report.html -l High --spider
+
+    - name: Upload ZAP Report
+      uses: actions/upload-artifact@v2
+      with:
+        name: zap-report
+        path: ZAP_2.10.0/zap-report.html
