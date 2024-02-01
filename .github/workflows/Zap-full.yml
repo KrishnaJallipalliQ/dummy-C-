@@ -23,7 +23,7 @@ jobs:
         docker_name: 'ghcr.io/zaproxy/zaproxy:stable'
         target: 'http://testphp.vulnweb.com/'
         rules_file_name: '.zap/rules.tsv'
-        cmd_options: '-a -t 60 --ignore "1001,1003"'
+        cmd_options: '-a -t 60'
 
     - name: Upload ZAP Report
       uses: actions/upload-artifact@v2
