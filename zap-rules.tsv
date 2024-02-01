@@ -1,0 +1,31 @@
+# Salesforce Application Rules
+
+# Cross-Site Scripting (XSS)
+1001 | true | Cross-Site Scripting (XSS) | High | Medium
+
+# Insecure Direct Object References (IDOR)
+1002 | true | Insecure Direct Object References (IDOR) | Medium | High
+
+# Security Misconfiguration
+1003 | true | Security Misconfiguration | Medium | Medium
+
+# Broken Authentication and Session Management
+1004 | true | Broken Authentication and Session Management | High | High
+
+# XML External Entity (XXE) Injection
+1005 | true | XML External Entity (XXE) Injection | High | Medium
+
+# Cross-Site Request Forgery (CSRF)
+1006 | true | Cross-Site Request Forgery (CSRF) | Medium | High
+
+# SQL Injection
+1007 | true | SQL Injection | High | Medium
+
+# Content Security Policy (CSP) Bypass
+1008 | true | Content Security Policy (CSP) Bypass | Medium | Medium
+
+# Insecure Deserialization
+1009 | true | Insecure Deserialization | High | Medium
+
+# Server-Side Request Forgery (SSRF)
+1010 | true | Server-Side Request Forgery (SSRF) | High | Medium
