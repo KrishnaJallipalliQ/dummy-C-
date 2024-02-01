@@ -22,7 +22,7 @@ jobs:
         token: ${{ secrets.PAT }}
         docker_name: 'owasp/zap2docker-stable'
         target: 'http://testphp.vulnweb.com/'
-        rules_file_name: '.zap/rules.tsv'
+        rules_file_name: 'zap/rules.tsv'
         cmd_options: '-a -t 60'
 
     - name: Upload ZAP Report
