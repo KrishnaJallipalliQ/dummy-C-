@@ -16,7 +16,7 @@ jobs:
         with:
           docker_name: 'owasp/zap2docker-stable'
           target: 'http://testphp.vulnweb.com/'
-          cmd_options: '-x "${{ github.workspace }}/zap_report.xml"'
+          cmd_options: "-x '${{ github.workspace }}/zap_report.xml'"
           http_login_form: 'login.php'
           http_login_http_username: 'test'
           http_login_http_password: 'test'
