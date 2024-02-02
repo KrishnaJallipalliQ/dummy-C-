@@ -33,7 +33,7 @@ jobs:
       run: sudo apt-get update && sudo apt-get install -y xsltproc
 
     - name: Convert XML to HTML
-      run: xsltproc pmd-report.xsl /home/runner/work/dummy-C-/dummy-C-/pmd-report.xml -o /home/runner/work/dummy-C-/dummy-C-/pmd-report.html
+      run: xsltproc --html ./pmd-report.xsl /home/runner/work/dummy-C-/dummy-C-/pmd-report.xml -o /home/runner/work/dummy-C-/dummy-C-/pmd-report.html
     - name: Upload PMD Report
       uses: actions/upload-artifact@v2
       with:
