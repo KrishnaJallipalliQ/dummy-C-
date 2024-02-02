@@ -38,7 +38,7 @@ jobs:
     - name: Convert XML to HTML
       run: |
         cd $GITHUB_WORKSPACE
-        xsltproc --html ./pmd-report.xsl /home/runner/work/dummy-C-/dummy-C-/pmd-report.xml -o /home/runner/work/dummy-C-/dummy-C-/pmd-report.html
+        xsltproc --html pmd-report.xsl /home/runner/work/dummy-C-/dummy-C-/pmd-report.xml -o /home/runner/work/dummy-C-/dummy-C-/pmd-report.html
     - name: Upload PMD Report
       uses: actions/upload-artifact@v2
       with:
