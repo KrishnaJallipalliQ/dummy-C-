@@ -3,7 +3,7 @@ name: Analysis with PMD
 on:
   push:
     branches:
-      - main
+      - test
 
 jobs:
   sonarqube_pmd_analysis:
