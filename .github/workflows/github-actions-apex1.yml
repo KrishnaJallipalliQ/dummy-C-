@@ -28,5 +28,13 @@ jobs:
         ls 
         echo "Current working directory: $(pwd)"
     - name: Run PMD
-      run: pmd check --dir ./apex-recipes-main/force-app/main/default/classes/*.cls || true
+      run: pmd check --dir ./apex-recipes-main/force-app/main/default/classes/*.cls --rulesets ./pmd-rules.xml -f xml -r /home/runner/work/dummy-C-/dummy-C-/pmd-report.html || true
+    - name: Convert XML to HTML
+      run: xmllint --html --format /home/runner/work/dummy-C-/dummy-C-/pmd-report.xml -o /home/runner/work/dummy-C-/dummy-C-/pmd-report.html
+
+    - name: Upload PMD Report
+      uses: actions/upload-artifact@v2
+      with:
+        name: pmd-report
+        path: /home/runner/work/dummy-C-/dummy-C-/pmd-report.html 
 
