@@ -39,10 +39,11 @@ jobs:
     - name: SonarQube Scan
       uses: sonarsource/sonarqube-scan-action@master
       with:
-        sonar-token: ${{ secrets.SONAR_TOKEN }}
-        sonar-project-key: dummy
-        sonar-project-name: dummy
-        sonar-host-url: http://localhost:9000
-        sonar-sources: ./apex-recipes-main/force-app/main/default/classes/*.cls
+        entryPoint: sonar-scanner
+        args: >
+          -Dsonar.projectKey=dummy
+          -Dsonar.sources=./apex-recipes-main/force-app/main/default/classes
+        projectBaseDir: ./apex-recipes-main/force-app/main/default/classes
       env:
-        SONAR_SCANNER_OPTS: -X
+        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        SONAR_HOST_URL: http://localhost:9000
