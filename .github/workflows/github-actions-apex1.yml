@@ -37,12 +37,12 @@ jobs:
         path: /home/runner/work/dummy-C-/pmd-report.html  
 
     - name: SonarQube Scan
-      uses: sonarsource/sonarqube-scan-action@test
+      uses: sonarsource/sonarqube-scan-action@master
       with:
         sonar-token: ${{ secrets.SONAR_TOKEN }}
         sonar-project-key: dummy
         sonar-project-name: dummy
         sonar-host-url: http://localhost:9000
-        sonar-sources: ./apex-recipes-main/force-app/main/default/classes
+        sonar-sources: ./apex-recipes-main/force-app/main/default/classes/*.cls
       env:
         SONAR_SCANNER_OPTS: -X
