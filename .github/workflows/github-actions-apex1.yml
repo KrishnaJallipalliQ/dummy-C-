@@ -35,4 +35,9 @@ jobs:
       with:
         name: pmd-report
         path: /home/runner/work/dummy-C-/pmd-report.html  
-
+        
+    - name: SonarQube Scan
+      uses: sonarsource/sonar-scanner-cli@v2
+      env:
+        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        SONAR_HOST_URL: 'http://localhost:9000'
