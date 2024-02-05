@@ -38,7 +38,7 @@ jobs:
         
     - name: SonarQube Scan
       run: |
-        sonar-scanner \
+        sonar-scanner
         -Dsonar.projectKey=dummy
         -Dsonar.sources=.\apex-recipes-main/force-app/main/default/classes
         -Dsonar.host.url=http://localhost:9000 
