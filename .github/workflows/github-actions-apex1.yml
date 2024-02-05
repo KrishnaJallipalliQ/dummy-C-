@@ -48,4 +48,3 @@ jobs:
           -Dsonar.sources=./apex-recipes-main/force-app/main/default/classes/
         projectBaseDir: ./
 
-
