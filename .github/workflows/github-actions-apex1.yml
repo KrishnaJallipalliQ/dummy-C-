@@ -39,7 +39,7 @@ jobs:
     - name: SonarQube Scan
       uses: sonarsource/sonarqube-scan-action@master
       with:
-        entryPoint: sonar-scanner
+        entryPoint: sonar-scanner -Dsonar.projectKey=dummy -Dsonar.sources=src -Dsonar.pmd.Path=/home/runner/work/dummy-C-/pmd-report.html
         args: >
           -Dsonar.login=${{ secrets.SONAR_TOKEN }}
           -Dsonar.projectKey=dummy
