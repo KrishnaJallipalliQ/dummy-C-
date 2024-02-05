@@ -47,8 +47,5 @@ jobs:
           -Dsonar.host.url=http://localhost:9000
           -Dsonar.sources=./apex-recipes-main/force-app/main/default/classes/
         projectBaseDir: ./
-      env:
-        SONAR_SCANNER_OPTS: -X
-        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        SONAR_HOST_URL: http://localhost:9000
+
 
