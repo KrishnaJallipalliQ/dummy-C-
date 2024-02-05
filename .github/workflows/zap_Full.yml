@@ -14,9 +14,7 @@ jobs:
       - name: ZAP Scan
         uses: zaproxy/action-full-scan@v0.9.0
         with:
-          docker_name: 'owasp/zap2docker-stable'
-          target: 'http://testphp.vulnweb.com/'
-          cmd_options: "-t '${{ github.workspace }}/zap_report.xml'"
+          cmd_options: "docker run -v $(pwd):/zap/wrk/:rw --user root owasp/zap2docker-stable zap-full-scan.py -t http://testphp.vulnweb.com/ -r report.html"
           http_login_form: 'login.php'
           http_login_http_username: 'test'
           http_login_http_password: 'test'
