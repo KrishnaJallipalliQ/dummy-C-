@@ -28,7 +28,7 @@ jobs:
         ls 
         echo "Current working directory: $(pwd)"
     - name: Run PMD
-      run: pmd check --dir ./apex-recipes-main/force-app/main/default/classes/*.cls --rulesets ./pmd-rules.xml -f html -r ${{ secrets.REPORT_PATH }} || true
+      run: pmd check --dir ${{ secrets.DIR_PATH }} --rulesets ${{ secrets.PATH_RULES }} -f html -r ${{ secrets.REPORT_PATH }} || true
 
     - name: Upload PMD Report
       uses: actions/upload-artifact@v2
