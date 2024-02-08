@@ -29,11 +29,20 @@ jobs:
         echo "Current working directory: $(pwd)"
     
     - name: Run PMD
-      run: pmd check --dir ./apex-recipes-main/force-app/main/default/classes/*.cs --rulesets ./pmd-rules.xml -f html -r ${{ secrets.REPORT_PATH }} || true
+      run: pmd check --dir ./apex-recipes-main/force-app/main/default/classes/*.cls --rulesets ./pmd-rules.xml -f html -r /home/runner/work/dummy-C-/pmd-report.html || true
+
+    - name: Upload PMD Report
+      uses: actions/upload-artifact@v2
+      with:
+        name: pmd-report
+        path: /home/runner/work/dummy-C-/pmd-report.html  
+        
+    - name: Run PMD C#
+      run: pmd check --dir ./apex-recipes-main/force-app/main/default/classes/*.cs --rulesets ./pmd-rules.xml -f xml -r /home/runner/work/dummy-C-/pmd-report.xml || true
     
     - name: Upload PMD Report
       uses: actions/upload-artifact@v2
       with:
         name: pmd-report
-        path: ${{ secrets.REPORT_PATH }} 
+        path: /home/runner/work/dummy-C-/pmd-report.xml 
 
