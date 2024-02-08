@@ -27,8 +27,6 @@ jobs:
       run: |
         ls 
         echo "Current working directory: $(pwd)"
-    - name: Run PMD
-      run: pmd check --dir ${{ secrets.DIR_MAIN_PATH }} --file-ext "cls,xml,cs" --rulesets ${{ secrets.PATH_RULES }} -f html -r ${{ secrets.REPORT_PATH }} || true
     
     - name: Run PMD
       run: pmd check --dir ./apex-recipes-main/force-app/main/default/classes/*.cs --rulesets ./pmd-rules.xml -f html -r ${{ secrets.REPORT_PATH }} || true
@@ -38,16 +36,4 @@ jobs:
       with:
         name: pmd-report
         path: ${{ secrets.REPORT_PATH }} 
-
-    - name: SonarQube Scan
-      uses: sonarsource/sonarqube-scan-action@master
-      with:
-        entryPoint: sonar-scanner -Dsonar.projectKey=dummy -Dsonar.sources=src -Dsonar.pmd.Path=/home/runner/work/dummy-C-/pmd-report.html
-        args: >
-          -Dsonar.login=${{ secrets.SONAR_TOKEN }}
-          -Dsonar.projectKey=dummy
-          -Dsonar.projectName=dummy
-          -Dsonar.host.url=http://localhost:9000
-          -Dsonar.sources=./apex-recipes-main/force-app/main/default/classes/
-        projectBaseDir: ./
 
