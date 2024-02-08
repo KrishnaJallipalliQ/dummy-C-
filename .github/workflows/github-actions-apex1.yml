@@ -28,7 +28,7 @@ jobs:
         ls 
         echo "Current working directory: $(pwd)"
     - name: Run PMD
-      run: pmd check --dir ${{ secrets.DIR_MAIN_PATH }} --rulesets ${{ secrets.PATH_RULES }} -f html -r ${{ secrets.REPORT_PATH }} || true
+      run: pmd check --dir ${{ secrets.DIR_MAIN_PATH }} --file-ext "cls,xml,cs" --rulesets ${{ secrets.PATH_RULES }} -f html -r ${{ secrets.REPORT_PATH }} || true
 
     - name: Upload PMD Report
       uses: actions/upload-artifact@v2
