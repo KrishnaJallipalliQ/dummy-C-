@@ -27,4 +27,3 @@ jobs:
           rulesets-path: "${{ secrets.PATH_RULES }}"
           code-analysis-token: "${{ secrets.PMD_APEX_TOKEN }}"
          
-
