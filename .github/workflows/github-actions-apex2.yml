@@ -1,29 +1,30 @@
-name: SonarQube Analysis with PMD
+name: Run Code Analysis
 
 on:
   push:
     branches:
-      - main
+      - 'main'
+  pull_request:
+    branches:
+     - 'main'
+    paths-ignore:
+     - 'README.md'
+     - '.github/workflows/**'
 
 jobs:
-  sonarqube_pmd_analysis:
+  code-analysis:
     runs-on: ubuntu-latest
-
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
+      - uses: actions/checkout@v4
+        with:
+          ref: master
+          repository: KrishnaJallipalliQ/dummy-c-
+          fetch-depth: 0
+          
+      - uses: KrishnaJallipalliQ/ACTION-QA-Apex-PMD@main
+        with:
+          code-analysis-directory: "${{ secrets.SOURCE_PATH }}" 
+          rulesets-path: "${{ secrets.PATH_RULES }}"
+          code-analysis-token: "${{ secrets.PMD_APEX_TOKEN }}"
+         
 
-    - name: Set up Java
-      uses: actions/setup-java@v2
-      with:
-        distribution: 'adopt'
-        java-version: '11'
-
-    - name: PMD Analysis
-      uses: legetz/setup-pmd@7.0.0-rc3
-     
-    - name: Upload PMD Report
-      uses: actions/upload-artifact@v2
-      with:
-        name: pmd-report
-        path: pmd-report.xml
