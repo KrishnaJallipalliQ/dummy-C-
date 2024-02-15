@@ -17,8 +17,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: master
-          repository: KrishnaJallipalliQ/dummy-c-
+          ref: main
+          repository: KrishnaJallipalliQ/dummy-C- 
           fetch-depth: 0
           
       - uses: KrishnaJallipalliQ/ACTION-QA-Apex-PMD@main
